@@ -5,19 +5,17 @@ jobs:
   Dart-Analysis:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Flutter SDK
+        uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.35.4
       - name: Check out repository code
         uses: actions/checkout@v6
-      - name: Install FVM
-        run: dart pub global activate fvm
-      - name: Add FVM to PATH
-        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-      - name: Install Flutter `3.35.4` through FVM
-        run: |
-          fvm install 3.35.4
       - name: Get Dependencies
         run: |
-          fvm flutter pub get
+          flutter pub get
       - name: Run Flutter Analyze
         run: |
-          fvm flutter analyze
+          flutter analyze
       - run: echo "Workflow Completed."
