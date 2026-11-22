@@ -1,0 +1,23 @@
+name: GitHub Actions Demo
+run-name: Dart Analysis
+on: [ push , pull_request ]
+jobs:
+  Dart-Analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v6
+      - name: Install FVM
+        run: dart pub global activate fvm
+      - name: Add FVM to PATH
+        run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+      - name: Install Flutter `3.35.4` through FVM
+        run: |
+          fvm install 3.35.4
+      - name: Get Dependencies
+        run: |
+          fvm flutter pub get
+      - name: Run Flutter Analyze
+        uses: |
+          fvm flutter analyze
+      - run: echo "Workflow Completed."
