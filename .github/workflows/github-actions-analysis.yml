@@ -18,6 +18,6 @@ jobs:
         run: |
           fvm flutter pub get
       - name: Run Flutter Analyze
-        uses: |
+        run: |
           fvm flutter analyze
       - run: echo "Workflow Completed."
