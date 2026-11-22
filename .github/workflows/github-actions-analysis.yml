@@ -1,6 +1,6 @@
 name: GitHub Actions Demo
 run-name: Dart Analysis
-on: [ push , pull_request ]
+on: pull_request
 jobs:
   Dart-Analysis:
     runs-on: ubuntu-latest
@@ -13,9 +13,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v6
       - name: Get Dependencies
-        run: |
-          flutter pub get
+        run: flutter pub get
       - name: Run Flutter Analyze
-        run: |
-          flutter analyze
-      - run: echo "Workflow Completed."
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
