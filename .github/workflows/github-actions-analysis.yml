@@ -9,7 +9,7 @@ jobs:
         uses: flutter-actions/setup-flutter@v3
         with:
           channel: stable
-          version: 3.35.4
+          version: 3.12.2
       - name: Check out repository code
         uses: actions/checkout@v6
       - name: Get Dependencies
